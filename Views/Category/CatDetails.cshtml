@@ -1,0 +1,39 @@
+@model Category
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+
+        <h1>@ViewBag.CatName.Name</h1>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col text-center pt-5">
+            <h3 class="display-5 mb-4">Products</h3>
+            <ul>
+                @foreach(var c in Model.Associations)
+                {
+                    <li>
+                        <h5>@c.Product.Name</h5>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col ms-3 border-left border-dark p-5">
+            <h3 class="display-5">Add Product</h3>
+            <form asp-controller="Category" asp-action="AddProduct" asp-route-categoryID="@ViewBag.CatName.CategoryID" method="POST">
+                <select class="form-select mb-4 justify-content-start">
+                    @foreach (var item in ViewBag.UnrelatedProducts)
+                    {
+                        <option value="@item.ProductID">@item.Name @item.ProductID</option>
+                    }
+                </select>
+                <div class="row justify-content-start ms-4 mb-4">
+                    <button class="btn border border-dark col-2 align-self-center">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

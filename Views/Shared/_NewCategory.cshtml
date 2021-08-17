@@ -1,0 +1,16 @@
+@model Category
+
+<form asp-controller="Category" asp-action="Create">
+    <div class="row">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="row justify-content-start">
+        <label asp-for="Name" class="col-3 form-label fs-2"></label>
+    </div>
+    <div class="row mb-4">
+        <input asp-for="Name" class="col-5 form-control">  
+    </div>
+    <div class="row justify-content-center mb-4">
+        <button class="btn border border-dark col-2 align-self-center">Create</button>
+    </div>
+</form>

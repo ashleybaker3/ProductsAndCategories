@@ -1,0 +1,24 @@
+@model List<Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col text-center pt-5">
+            <h3 class="display-5 mb-4">New Category</h3>
+            @{
+                Category emptyCategory = new Category();
+            }
+            <partial name="_NewCategory" model="@emptyCategory"></partial>
+        </div>
+        <div class="col ms-3 border-left border-dark p-5">
+            <h3 class="display-5">Existing Categories</h3>
+            @foreach(Category c in Model)
+            {
+                <h5><a asp-controller="Category" asp-action="ViewCategory" asp-route-categoryID="@c.CategoryID">@c.Name</a></h5>
+            }
+        </div>
+    </div>
+</div>
